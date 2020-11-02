@@ -22,20 +22,25 @@ export default {
                     hiddenOnCollapse: true
                 },
                 {
-                    href: '#',
-                    title: 'Dashboard',
-                    icon: 'fa fa-user'
+                    href: '/',
+                    title: '홈',
+                    icon: 'fa fa-home'
                 },
                 {
-                    href: '/charts',
-                    title: 'Charts',
-                    icon: 'fa fa-chart-area',
+                    href: '/bon',
+                    title: '1번링크',
+                    icon: 'fa fa-utensils',
                     child: [
                         {
                             href: '/charts/sublink',
                             title: 'Sub Link'
                         }
                     ]
+                },
+                {
+                    href: '/',
+                    title: '2번링크',
+                    icon: 'fa fa-hockey-puck'
                 }
             ]
         }
