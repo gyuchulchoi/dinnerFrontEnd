@@ -27,6 +27,9 @@ export default {
         detail: (menu) => {
             console.log(menu)
         }
+    },
+    created : () => {
+        console.log('dds')
     }
 }
 </script>

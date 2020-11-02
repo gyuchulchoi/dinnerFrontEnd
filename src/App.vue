@@ -1,21 +1,18 @@
 <template>
-  <div>
-      <div>
-        <b-jumbotron header="BootstrapVue" lead="Bootstrap v4 Components for Vue.js 2">
-        </b-jumbotron>
-      </div>
-    <Bonif />
-  </div>
+    <div>
+        <SideBar/>
+        <router-view/>
+    </div>
 </template>
 
 <script>
 
-import Bonif from './components/Bonif.vue'
+import SideBar from './components/SideBar.vue'
 
 export default {
-  name: 'App',
-  components: {
-    Bonif
-  }
+    name: 'App',
+    components: {
+        SideBar
+    }
 }
 </script>

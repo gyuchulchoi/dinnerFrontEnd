@@ -16,7 +16,7 @@
         <b-card-footer>
             {{menu.price}}
         </b-card-footer>
-        </b-card>
+    </b-card>
 </template>
 
 <script>
