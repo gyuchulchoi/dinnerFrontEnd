@@ -1,7 +1,7 @@
 <template>
     <div>
-        <SideBar/>
-        <router-view/>
+        <SideBar @collapsedChange="collapsedChange"/>
+        <router-view :class="mainStyle"/>
     </div>
 </template>
 
@@ -13,6 +13,31 @@ export default {
     name: 'App',
     components: {
         SideBar
+    },
+    data() {
+        return {
+            collapsed: false
+        }
+    },
+    methods: {
+        collapsedChange : function (collapsed) {
+            this.collapsed = collapsed
+        }
+    },
+    computed: {
+        mainStyle: function () {
+            return this.collapsed? 'mainStyle':'mainStyle2'
+        }
     }
+    
 }
 </script>
+
+<style scoped>
+ .mainStyle{
+    padding-left: 50px;
+ }
+ .mainStyle2{
+    padding-left: 350px;
+ }
+</style>

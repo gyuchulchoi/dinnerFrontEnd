@@ -1,13 +1,13 @@
 <template>
-    <sidebar-menu :menu="menu" @toggle-collapse="onToggleCollapse" @item-click="onItemClick"/>
+    <sidebar-menu :menu="menu" @toggle-collapse="onToggleCollapse" @item-click="onItemClick" :collapsed="true"/>
 </template>
 
 <script>
 
 export default {
-    methods: {
-        onToggleCollapse : (collapsed) => {
-            console.log(collapsed)
+    methods : {
+        onToggleCollapse : function (collapsed) {
+            this.$emit('collapsedChange', collapsed)
         },
         onItemClick : (event, item, node) => {
             console.log(event, item, node)
