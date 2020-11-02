@@ -1,8 +1,6 @@
 <template>
     <div>
-        {{menu.id}}
-        {{menu.title}}
-        {{menu.price}}
+
         {{$route.params.id}}
     </div>
 </template>
