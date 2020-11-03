@@ -18,7 +18,7 @@
 
 <script>
 import MenuList from '../components/MenuList.vue'
-import {bonifMenuList, bonifTypeList} from '../assets/constant'
+import {bonifMenuList, bonifTypeList, myMixin} from '../assets/constant'
 
 export default {
     components: {
@@ -43,8 +43,10 @@ export default {
         }
     },
     created: function() {
+        console.log('Bonif created')
         this.items = bonifMenuList
-    }
+    },
+    mixins: [myMixin]
 }
 </script>
 

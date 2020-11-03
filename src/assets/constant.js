@@ -42,3 +42,9 @@ export const bonifMenuList = [
         type: 'half'
     }
 ]
+
+export const myMixin = {
+    created: function () {
+        console.log('myMixin created')
+    }
+}
