@@ -11,6 +11,12 @@ export const kimTypeList = [
     { key: 'half', value: '라이스류' }
 ]
 
+export const phoneNumber = Object.freeze({
+    bon: "010-0101-0101",
+    kim: "010-2020-5151",
+    china: "010-5151-1231"
+})
+
 export const myMixin = {
     created: function () {
         console.log('myMixin created')

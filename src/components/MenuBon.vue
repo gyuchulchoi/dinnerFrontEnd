@@ -16,11 +16,29 @@
         <b-card-footer>
             {{menu.price}}
         </b-card-footer>
+        <div>
+            <b-button v-b-modal="menu.id + 'id'">주문표에 추가하기</b-button>
+
+            <b-modal :id="menu.id + 'id'" title="BootstrapVue" @ok="aa">
+                <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="name"/>
+                <p class="my-4">{{menu.name}}</p>
+                <p class="my-4">{{menu.price}}</p>
+                <div>
+                {{name}}
+                </div>
+                
+            </b-modal>
+        </div>
     </b-card>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            name: null
+        }
+    },
     props: {
         menu: {
             type: Object
@@ -28,10 +46,13 @@ export default {
     },
     methods: {
         menuDetail : function () {
-            this.$router.push({
-                name: 'menu',
-                params: {id: this.menu.id}
-            })
+            // this.$router.push({
+            //     name: 'menu',
+            //     params: {id: this.menu.id}
+            // })
+        },
+        aa: function() {
+            console.log('hi')
         }
     }
 }

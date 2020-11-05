@@ -36,7 +36,7 @@ export default {
                             title: '본도시락'
                         },
                         {
-                            href: '/bon',
+                            href: '/kim',
                             title: '김가네'
                         },
                         {

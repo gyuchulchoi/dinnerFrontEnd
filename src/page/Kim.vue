@@ -1,16 +1,7 @@
 <template>
     <div>
         <div>
-            <b-breadcrumb>
-                <b-breadcrumb-item 
-                    v-for="(item, index) in filterItems" 
-                    :key="index"
-                    :active="item.key == filterKeyword"
-                    @click="filterKeyword = item.key"
-                    >
-                    {{item.value}}
-                </b-breadcrumb-item>
-            </b-breadcrumb>
+            <FilterBar :filterItems="filterItems" :filterKeyword="filterKeyword" @onClickFilter="onClickFilter"/>
             <MenuList :menuList="filteredList" :restaurant="restourantKind.bon"/>
         </div>
     </div>
@@ -18,19 +9,26 @@
 
 <script>
 import MenuList from '../components/MenuList.vue'
-import {bonifTypeList, myMixin} from '../assets/constant'
+import FilterBar from '../components/FilterBar.vue'
+import {kimTypeList, myMixin} from '../assets/constant'
 import {utils} from '../assets/mixin'
 import axios from 'axios'
 
 export default {
     components: {
-        MenuList
+        MenuList,
+        FilterBar
     },
     data() {
         return {
             items: [],
             filterKeyword: 'all',
-            filterItems: bonifTypeList
+            filterItems: kimTypeList
+        }
+    },
+    methods: {
+        onClickFilter: function (key) {
+            this.filterKeyword = key
         }
     },
     computed : {

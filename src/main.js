@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 
-import {Home, Bonif, MenuDetail} from './index'
+import {Home, Bonif, MenuDetail, Kim} from './index'
 
 Vue.use(VueSidebarMenu)
 Vue.use(BootstrapVue)
@@ -28,6 +28,7 @@ Vue.config.productionTip = false
 const routes = [
   { path: '/', component: Home },
   { path: '/bon', component: Bonif },
+  { path: '/kim', component: Kim },
   { path: '/menu/:id', name:'menu', component: MenuDetail }
 ]
 
