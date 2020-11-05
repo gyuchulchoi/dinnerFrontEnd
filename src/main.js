@@ -25,14 +25,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
-Vue.mixin({
-  created: function() {
-    if(this.$options.aaa) {
-      console.log(this.$options.aaa)
-    }
-  }
-})
-
 const routes = [
   { path: '/', component: Home },
   { path: '/bon', component: Bonif },

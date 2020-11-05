@@ -28,8 +28,7 @@ export default {
         mainStyle: function () {
             return this.collapsed? 'mainStyle':'mainStyle2'
         }
-    },
-    aaa : 'dd'
+    }
 }
 </script>
 

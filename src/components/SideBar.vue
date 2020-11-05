@@ -18,7 +18,7 @@ export default {
             menu: [
                 {
                     header: true,
-                    title: 'Main Navigation',
+                    title: '저녁밥도우미',
                     hiddenOnCollapse: true
                 },
                 {
@@ -27,19 +27,27 @@ export default {
                     icon: 'fa fa-home'
                 },
                 {
-                    href: '/bon',
-                    title: '1번링크',
+                    href: '#',
+                    title: '식당',
                     icon: 'fa fa-utensils',
                     child: [
                         {
-                            href: '/charts/sublink',
-                            title: 'Sub Link'
+                            href: '/bon',
+                            title: '본도시락'
+                        },
+                        {
+                            href: '/bon',
+                            title: '김가네'
+                        },
+                        {
+                            href: '/bon',
+                            title: '중국집'
                         }
                     ]
                 },
                 {
                     href: '/',
-                    title: '2번링크',
+                    title: '주문확인',
                     icon: 'fa fa-hockey-puck'
                 }
             ]

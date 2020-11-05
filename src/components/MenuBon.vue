@@ -10,7 +10,7 @@
         @click="menuDetail">
         <b-card-title>
             <div>
-                {{menu.name}}dd
+                본도시락 : {{menu.name}}
             </div>
         </b-card-title>
         <b-card-footer>
