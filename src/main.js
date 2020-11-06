@@ -12,8 +12,9 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
-
+import store from './store'
 import {Home, Bonif, MenuDetail, Kim} from './index'
+
 
 Vue.use(VueSidebarMenu)
 Vue.use(BootstrapVue)
@@ -26,20 +27,19 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/bon', component: Bonif },
-  { path: '/kim', component: Kim },
-  { path: '/menu/:id', name:'menu', component: MenuDetail }
+    { path: '/', component: Home },
+    { path: '/bon', component: Bonif },
+    { path: '/kim', component: Kim },
+    { path: '/menu/:id', name:'menu', component: MenuDetail }
 ]
 
-
-
 const router = new VueRouter({
-  mode: 'history',
-  routes
+    mode: 'history',
+    routes
 });
 
 new Vue({
-  render: h => h(App),
-  router
+    render: h => h(App),
+    router,
+    store
 }).$mount('#app')

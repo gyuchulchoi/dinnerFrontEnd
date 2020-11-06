@@ -23,9 +23,6 @@
                 <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="name"/>
                 <p class="my-4">{{menu.name}}</p>
                 <p class="my-4">{{menu.price}}</p>
-                <div>
-                {{name}}
-                </div>
                 
             </b-modal>
         </div>

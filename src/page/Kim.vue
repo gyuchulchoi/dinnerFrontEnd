@@ -1,17 +1,22 @@
 <template>
+<div>
     <div>
-        <div>
-            <FilterBar :filterItems="filterItems" :filterKeyword="filterKeyword" @onClickFilter="onClickFilter"/>
-            <MenuList :menuList="filteredList" :restaurant="restourantKind.bon"/>
-        </div>
+        <FilterBar :filterItems="filterItems" :filterKeyword="filterKeyword" @onClickFilter="onClickFilter" />
+        <MenuList :menuList="filteredList" :restaurant="restourantKind.bon" />
     </div>
+</div>
 </template>
 
 <script>
 import MenuList from '../components/MenuList.vue'
 import FilterBar from '../components/FilterBar.vue'
-import {kimTypeList, myMixin} from '../assets/constant'
-import {utils} from '../assets/mixin'
+import {
+    kimTypeList,
+    myMixin
+} from '../assets/constant'
+import {
+    utils
+} from '../assets/mixin'
 import axios from 'axios'
 
 export default {
@@ -31,20 +36,20 @@ export default {
             this.filterKeyword = key
         }
     },
-    computed : {
-        filteredList : function () {
-            if(this.filterKeyword == 'all') return this.items
+    computed: {
+        filteredList: function () {
+            if (this.filterKeyword == 'all') return this.items
             else return this.items.filter(item => item.type == this.filterKeyword)
         }
     },
-    created: function() {
+    created: function () {
         console.log('Bonif created')
         axios.get('http://localhost:8000/bon/')
-        .then(res => {
-            this.items = res.data
-        }, err => {
-            console.log(err)
-        });
+            .then(res => {
+                this.items = res.data
+            }, err => {
+                console.log(err)
+            });
     },
     mixins: [myMixin, utils('restourantKind')]
 }
