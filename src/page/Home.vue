@@ -2,7 +2,8 @@
 <div>
     <b-jumbotron :header="appName" lead="Bootstrap v4 Components for Vue.js 2" />
     {{orderList}}
-    <button @click="addOrder({order:{name:'dd'}})"></button>
+    <button @click="addOrder({order:{name:'dd'}})">추가</button>
+    <button @click="removeOrder({id:1})">삭제</button>
 </div>
 </template>
 
@@ -20,7 +21,7 @@ export default {
         ...mapState(['appName'])
     },
     methods: {
-        ...mapActions('order', ['addOrder'])
+        ...mapActions('order', ['addOrder', 'removeOrder'])
     }
 }
 </script>

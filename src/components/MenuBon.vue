@@ -1,35 +1,31 @@
 <template>
-    <b-card
-        v-if="menu"
-        img-src="https://picsum.photos/600/300/?image=25"
-        img-alt="Image"
-        img-top
-        tag="article"
-        style="max-width: 20rem;"
-        class="mb-2"
-        @click="menuDetail">
-        <b-card-title>
-            <div>
-                본도시락 : {{menu.name}}
-            </div>
-        </b-card-title>
-        <b-card-footer>
-            {{menu.price}}
-        </b-card-footer>
+<b-card v-if="menu" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top tag="article" style="max-width: 20rem;" class="mb-2">
+    <b-card-title>
         <div>
-            <b-button v-b-modal="menu.id + 'id'">주문표에 추가하기</b-button>
-
-            <b-modal :id="menu.id + 'id'" title="BootstrapVue" @ok="aa">
-                <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="name"/>
-                <p class="my-4">{{menu.name}}</p>
-                <p class="my-4">{{menu.price}}</p>
-                
-            </b-modal>
+            본도시락 : {{menu.name}}
         </div>
-    </b-card>
+    </b-card-title>
+    <b-card-footer>
+        {{menu.price}}
+    </b-card-footer>
+    <div>
+        <b-button v-b-modal="menu.id + 'id'">주문표에 추가하기</b-button>
+
+        <b-modal :id="menu.id + 'id'" title="BootstrapVue" @ok="onClickButton(menu, name)">
+            <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="name" />
+            <p class="my-4">{{menu.name}}</p>
+            <p class="my-4">{{menu.price}}</p>
+
+        </b-modal>
+    </div>
+</b-card>
 </template>
 
 <script>
+import {
+    mapActions
+} from 'vuex'
+
 export default {
     data() {
         return {
@@ -42,14 +38,17 @@ export default {
         }
     },
     methods: {
-        menuDetail : function () {
-            // this.$router.push({
-            //     name: 'menu',
-            //     params: {id: this.menu.id}
-            // })
-        },
-        aa: function() {
-            console.log('hi')
+        ...mapActions('order', ['addOrder']),
+        onClickButton: function (menu, name) {
+            this.addOrder({
+                order: {
+                    ...menu,
+                    name: name
+                }
+            }).then(() => {
+                this.name = null
+                console.log('end addorder')
+            })
         }
     }
 }
