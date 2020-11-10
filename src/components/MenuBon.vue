@@ -11,8 +11,8 @@
     <div>
         <b-button v-b-modal="menu.id + 'id'">주문표에 추가하기</b-button>
 
-        <b-modal :id="menu.id + 'id'" title="BootstrapVue" @ok="onClickButton(menu, name)">
-            <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="name" />
+        <b-modal :id="menu.id + 'id'" title="BootstrapVue" @ok="onClickButton(menu, orderer)">
+            <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="orderer" />
             <p class="my-4">{{menu.name}}</p>
             <p class="my-4">{{menu.price}}</p>
 
@@ -23,13 +23,14 @@
 
 <script>
 import {
-    mapActions
-} from 'vuex'
+    utils
+} from '../assets/mixin'
 
 export default {
+    mixins: [utils('addOrderEvent')],
     data() {
         return {
-            name: null
+            orderer: null
         }
     },
     props: {
@@ -38,16 +39,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions('order', ['addOrder']),
-        onClickButton: function (menu, name) {
-            this.addOrder({
-                order: {
-                    ...menu,
-                    name: name
-                }
-            }).then(() => {
-                this.name = null
-                console.log('end addorder')
+        onClickButton: function (menu, orderer) {
+            this.$socket.emit(this.addOrderEvent, {
+                ...menu,
+                orderer
             })
         }
     }

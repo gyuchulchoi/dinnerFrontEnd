@@ -7,19 +7,26 @@
 
 <script>
 import SideBar from './components/SideBar.vue'
-import axios from 'axios'
+import {
+    utils
+} from './assets/mixin'
+import {
+    mapActions
+} from 'vuex'
 
 export default {
     name: 'App',
     components: {
         SideBar
     },
+    mixins: [utils('addOrderEvent')],
     data() {
         return {
             collapsed: true
         }
     },
     methods: {
+        ...mapActions('order', ['addOrder']),
         collapsedChange: function (collapsed) {
             this.collapsed = collapsed
         }
@@ -30,22 +37,15 @@ export default {
         }
     },
     created() {
-        axios.get('http://localhost:3000')
-            .then(res => {
-                console.log(res)
-            }, err => {
-                console.log(err)
-            });
-    },
-    sockets: {
-        connect: function () {
-            console.log('11111111111111111')
-        },
-        customEmit: function (data) {
-            console.log('22222222222222222')
-            console.log(data)
-        }
-    },
+        this.$socket.emit('join')
+        this.$socket.on(this.addOrderEvent, (data) => {
+            this.addOrder({
+                order: data
+            }).then(() => {
+                console.log('end addorder')
+            })
+        })
+    }
 }
 </script>
 

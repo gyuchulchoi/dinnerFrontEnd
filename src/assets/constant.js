@@ -28,3 +28,5 @@ export const restourantKind = Object.freeze({
     kim : "kim",
     china : 'china'
 })
+
+export const addOrderEvent = 'addOrder'

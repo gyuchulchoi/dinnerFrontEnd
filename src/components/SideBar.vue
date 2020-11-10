@@ -1,22 +1,20 @@
 <template>
-    <sidebar-menu :menu="menu" @toggle-collapse="onToggleCollapse" @item-click="onItemClick" :collapsed="true"/>
+<sidebar-menu :menu="menu" @toggle-collapse="onToggleCollapse" @item-click="onItemClick" :collapsed="true" />
 </template>
 
 <script>
-
 export default {
-    methods : {
-        onToggleCollapse : function (collapsed) {
+    methods: {
+        onToggleCollapse: function (collapsed) {
             this.$emit('collapsedChange', collapsed)
         },
-        onItemClick : (event, item, node) => {
+        onItemClick: (event, item, node) => {
             console.log(event, item, node)
         }
     },
     data() {
         return {
-            menu: [
-                {
+            menu: [{
                     header: true,
                     title: '저녁밥도우미',
                     hiddenOnCollapse: true
@@ -30,8 +28,7 @@ export default {
                     href: '#',
                     title: '식당',
                     icon: 'fa fa-utensils',
-                    child: [
-                        {
+                    child: [{
                             href: '/bon',
                             title: '본도시락'
                         },
@@ -46,7 +43,7 @@ export default {
                     ]
                 },
                 {
-                    href: '/',
+                    href: '/confirmOrder',
                     title: '주문확인',
                     icon: 'fa fa-hockey-puck'
                 }
