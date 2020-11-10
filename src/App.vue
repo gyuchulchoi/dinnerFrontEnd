@@ -7,6 +7,7 @@
 
 <script>
 import SideBar from './components/SideBar.vue'
+import axios from 'axios'
 
 export default {
     name: 'App',
@@ -29,15 +30,19 @@ export default {
         }
     },
     created() {
-        this.$socket.emit('chat', {
-            message: '클라이언트가 보냇다'
-        })
+        axios.get('http://localhost:3000')
+            .then(res => {
+                console.log(res)
+            }, err => {
+                console.log(err)
+            });
     },
     sockets: {
         connect: function () {
-            console.log('socket connected')
+            console.log('11111111111111111')
         },
         customEmit: function (data) {
+            console.log('22222222222222222')
             console.log(data)
         }
     },

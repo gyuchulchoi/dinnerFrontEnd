@@ -16,15 +16,11 @@ import store from './store'
 import {Home, Bonif, MenuDetail, Kim} from './index'
 import VueSocketIO from 'vue-socket.io'
 
-Vue.use(new VueSocketIO({
-    debug: true,
-    connection: 'http://localhost:3000',
-    vuex: {
-        store,
-        actionPrefix: 'SOCKET_',
-        mutationPrefix: 'SOCKET_'
-    },
-}))
+// Vue.use(new VueSocketIO({
+//     debug: true,
+//     connection: 'http://localhost:3000',
+//     transports : ['polling','websocket'],
+// }))
 
 Vue.use(VueSidebarMenu)
 Vue.use(BootstrapVue)
