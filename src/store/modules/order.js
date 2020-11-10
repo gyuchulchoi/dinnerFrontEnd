@@ -6,8 +6,15 @@ const state = () => ({
 })
 
 const getters = {
-    // 각 음식점 종류별로 필터링
-
+    bonOrderList: (state) => {
+        return state.orderList.filter(order => order.menu_type == "bon")
+    },
+    bonTotalPrice: (state, getters) => {
+        let totalPrice = 0
+        if(getters.bonOrderList.length == 0) return 0
+        getters.bonOrderList.forEach(order => totalPrice += order.price)
+        return totalPrice
+    }
 }
 
 const mutations = {
@@ -21,11 +28,11 @@ const mutations = {
 
 const actions = {
     [ADD_ORDER] ({commit}, payload) {
-        // return new Promise((resolve, reject) => {
-        //     commit('someMutation')
-        //     resolve()
-        // })
-        commit(ADD_ORDER, payload)
+        return new Promise((resolve) => {
+            commit(ADD_ORDER, payload)
+            resolve(payload.order)
+        })
+        // commit(ADD_ORDER, payload)
     },
     [REMOVE_ORDER] ({commit}, payload) {
         commit(REMOVE_ORDER, payload)

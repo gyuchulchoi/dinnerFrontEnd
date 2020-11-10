@@ -42,7 +42,8 @@ export default {
         onClickButton: function (menu, orderer) {
             this.$socket.emit(this.addOrderEvent, {
                 ...menu,
-                orderer
+                orderer,
+                menu_type: 'bon'
             })
         }
     }

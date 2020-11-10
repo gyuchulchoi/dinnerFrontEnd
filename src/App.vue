@@ -8,7 +8,8 @@
 <script>
 import SideBar from './components/SideBar.vue'
 import {
-    utils
+    utils,
+    toast
 } from './assets/mixin'
 import {
     mapActions
@@ -19,7 +20,7 @@ export default {
     components: {
         SideBar
     },
-    mixins: [utils('addOrderEvent')],
+    mixins: [utils('addOrderEvent'), toast],
     data() {
         return {
             collapsed: true
@@ -41,8 +42,9 @@ export default {
         this.$socket.on(this.addOrderEvent, (data) => {
             this.addOrder({
                 order: data
-            }).then(() => {
-                console.log('end addorder')
+            }).then((order) => {
+                this.makeToast('success', `${order.orderer}님이 ${order.name}를 추가했습니다.`);
+                console.log(order)
             })
         })
     }

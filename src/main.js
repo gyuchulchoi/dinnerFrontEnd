@@ -15,6 +15,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 import store from './store'
 import {Home, Bonif, MenuDetail, Kim, ConfirmOrder} from './index'
 import io from 'socket.io-client';
+import * as filters from './filters.js'
 
 const socket = io('http://192.168.62.51:3000/');
 
@@ -41,6 +42,10 @@ const routes = [
 const router = new VueRouter({
     mode: 'history',
     routes
+});
+
+Object.keys(filters).forEach((key) => {
+    Vue.filter(key, filters[key]);
 });
 
 new Vue({
