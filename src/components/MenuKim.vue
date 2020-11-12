@@ -2,11 +2,11 @@
 <b-card v-if="menu" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top tag="article" style="max-width: 20rem;" class="mb-2">
     <b-card-title>
         <div>
-            김가네 : {{menu.name}}
+            {{menu.name}}
         </div>
     </b-card-title>
     <b-card-footer>
-        {{menu.price}}
+        {{menu.price | comma}}원
     </b-card-footer>
     <div>
         <b-button v-b-modal="menu.id + 'id'">주문표에 추가하기</b-button>
@@ -14,7 +14,7 @@
         <b-modal :id="menu.id + 'id'" title="추가하기" @ok="insertMenu(menu, orderer)">
             <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="orderer" />
             <p class="my-4">{{menu.name}}</p>
-            <p class="my-4">{{menu.price}}</p>
+            <p class="my-4">{{menu.price | comma}}원</p>
 
         </b-modal>
     </div>

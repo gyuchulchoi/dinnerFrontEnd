@@ -2,6 +2,13 @@
 <div>
     <SideBar @collapsedChange="collapsedChange" />
     <router-view :class="mainStyle" />
+
+    <b-dropdown id="dropdown-dropup" dropup text="주문현황" variant="primary" class="m-2 overlay">
+        <b-dropdown-item v-for="order in orderList" :key="order.id">
+            {{order.orderer}} - {{order.name}}
+        </b-dropdown-item>
+    </b-dropdown>
+
 </div>
 </template>
 
@@ -12,7 +19,8 @@ import {
     toast
 } from './assets/mixin'
 import {
-    mapActions
+    mapActions,
+    mapState
 } from 'vuex'
 
 export default {
@@ -35,7 +43,8 @@ export default {
     computed: {
         mainStyle: function () {
             return this.collapsed ? 'mainStyle' : 'mainStyle2'
-        }
+        },
+        ...mapState('order', ['orderList'])
     },
     created() {
         this.getOrderList()
@@ -57,5 +66,14 @@ export default {
 
 .mainStyle2 {
     padding-left: 350px;
+}
+
+.overlay {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
 }
 </style>
