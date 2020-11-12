@@ -7,13 +7,13 @@ const state = () => ({
 })
 
 const getters = {
-    bonOrderList: (state) => {
-        return state.orderList.filter(order => order.menu_type == "bon")
+    orderListbyRestaurant: (state) => (restaurantType) => {
+        return state.orderList.filter(order => order.menu_type == restaurantType)
     },
-    bonTotalPrice: (state, getters) => {
+    totalPrice: (state, getters) => (restaurantType) => {
         let totalPrice = 0
-        if(getters.bonOrderList.length == 0) return 0
-        getters.bonOrderList.forEach(order => totalPrice += order.price)
+        if(getters.orderListbyRestaurant(restaurantType).length == 0) return 0
+        getters.orderListbyRestaurant(restaurantType).forEach(order => totalPrice += order.price)
         return totalPrice
     }
 }

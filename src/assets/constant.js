@@ -6,9 +6,9 @@ export const bonifTypeList = [
 
 export const kimTypeList = [
     { key: 'all', value: '전체' },
-    { key: 'one', value: '김밥류' },
-    { key: 'half', value: '분식류' },
-    { key: 'half', value: '라이스류' }
+    { key: 'kimbab', value: '김밥류' },
+    { key: 'snack', value: '분식류' },
+    { key: 'rise', value: '라이스류' }
 ]
 
 export const phoneNumber = Object.freeze({

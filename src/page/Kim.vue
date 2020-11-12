@@ -2,7 +2,7 @@
 <div>
     <div>
         <FilterBar :filterItems="filterItems" :filterKeyword="filterKeyword" @onClickFilter="onClickFilter" />
-        <MenuList :menuList="filteredList" :restaurant="restourantKind.bon" />
+        <MenuList :menuList="filteredList" :restaurant="restourantKind.kim" />
     </div>
 </div>
 </template>
@@ -18,6 +18,10 @@ import {
     utils
 } from '../assets/mixin'
 import axios from 'axios'
+import {
+    API_SERVER,
+    KIMMENU
+} from '../assets/urls'
 
 export default {
     components: {
@@ -43,8 +47,7 @@ export default {
         }
     },
     created: function () {
-        console.log('Bonif created')
-        axios.get('http://localhost:8000/bon/')
+        axios.get(API_SERVER + KIMMENU)
             .then(res => {
                 this.items = res.data
             }, err => {
