@@ -11,7 +11,7 @@
     <div>
         <b-button v-b-modal="menu.id + 'id'">주문표에 추가하기</b-button>
 
-        <b-modal :id="menu.id + 'id'" title="BootstrapVue" @ok="onClickButton(menu, orderer)">
+        <b-modal :id="menu.id + 'id'" title="BootstrapVue" @ok="insertMenu(menu, orderer)">
             <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="orderer" />
             <p class="my-4">{{menu.name}}</p>
             <p class="my-4">{{menu.price}}</p>
@@ -25,6 +25,11 @@
 import {
     utils
 } from '../assets/mixin'
+import axios from 'axios';
+import {
+    API_SERVER,
+    ORDERS
+} from '../assets/urls';
 
 export default {
     mixins: [utils('addOrderEvent')],
@@ -39,11 +44,21 @@ export default {
         }
     },
     methods: {
-        onClickButton: function (menu, orderer) {
+        insertMenu: function (menu, orderer) {
+            axios.post(API_SERVER + ORDERS, {
+                    ...menu,
+                    orderer,
+                    menu_type: 'bon'
+                })
+                .then(res => {
+                    this.noticeAddOrder(res.data)
+                }, err => {
+                    console.log(err)
+                })
+        },
+        noticeAddOrder: function (order) {
             this.$socket.emit(this.addOrderEvent, {
-                ...menu,
-                orderer,
-                menu_type: 'bon'
+                order
             })
         }
     }

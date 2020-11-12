@@ -27,7 +27,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions('order', ['addOrder']),
+        ...mapActions('order', ['getOrderList']),
         collapsedChange: function (collapsed) {
             this.collapsed = collapsed
         }
@@ -38,14 +38,13 @@ export default {
         }
     },
     created() {
+        this.getOrderList()
         this.$socket.emit('join')
         this.$socket.on(this.addOrderEvent, (data) => {
-            this.addOrder({
-                order: data
-            }).then((order) => {
-                this.makeToast('success', `${order.orderer}님이 ${order.name}를 추가했습니다.`);
-                console.log(order)
-            })
+            this.getOrderList()
+                .then(() => {
+                    this.makeToast('success', '알림', `${data.order.orderer}님이 ${data.order.name}를 추가했습니다.`);
+                })
         })
     }
 }

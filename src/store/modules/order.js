@@ -1,5 +1,6 @@
-import { ADD_ORDER, REMOVE_ORDER } from "./mutation-types"
-
+import axios from "axios"
+import { API_SERVER, ORDERS } from "../../assets/urls"
+import { GET_ORDER_LIST, ADD_ORDER, REMOVE_ORDER } from "./mutation-types"
 
 const state = () => ({
     orderList: []
@@ -18,6 +19,9 @@ const getters = {
 }
 
 const mutations = {
+    [GET_ORDER_LIST] (state, payload) {
+        state.orderList = payload
+    },
     [ADD_ORDER] (state, payload) {
         state.orderList.push(payload.order)
     },
@@ -27,12 +31,18 @@ const mutations = {
 }
 
 const actions = {
+    [GET_ORDER_LIST] ({commit}) {
+        axios.get(API_SERVER + ORDERS)
+        .then(res => {
+            commit(GET_ORDER_LIST, res.data)
+        })
+        .catch(err => console.log(err))  
+    },
     [ADD_ORDER] ({commit}, payload) {
         return new Promise((resolve) => {
             commit(ADD_ORDER, payload)
             resolve(payload.order)
         })
-        // commit(ADD_ORDER, payload)
     },
     [REMOVE_ORDER] ({commit}, payload) {
         commit(REMOVE_ORDER, payload)

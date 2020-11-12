@@ -44,6 +44,4 @@ export default {
 .totalPrice {
     text-align: right;
 }
-
-.price {}
 </style>
