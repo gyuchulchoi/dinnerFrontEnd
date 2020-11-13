@@ -1,7 +1,12 @@
 export const bonifTypeList = [
     { key: 'all', value: '전체' },
-    { key: 'one', value: '한상' },
-    { key: 'half', value: '반상' }
+    { key: 'one', value: '잘 차린, 한상' },
+    { key: 'half', value: '잘 차린, 반상' },
+    { key: 'korean', value: '잘 차린, 한정식'},
+    { key: 'small', value: '잘 차린, 소반상'},
+    { key: 'banchan', value: '잘 차린, 일품반찬'},
+    { key: 'other', value: '기타'},
+    { key: 'winter', value: '겨울 방구석 미식회'}
 ]
 
 export const kimTypeList = [

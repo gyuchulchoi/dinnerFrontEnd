@@ -33,13 +33,19 @@ export default {
     },
     computed : {
         filteredList : function () {
-            if(this.filterKeyword == 'all') return this.items
-            else return this.items.filter(item => item.type == this.filterKeyword)
+            if(this.filterKeyword == 'one') return this.items.filter(item => item.menu_type == this.filterKeyword)
+            else if(this.filterKeyword == 'half') return this.items.filter(item => item.menu_type == this.filterKeyword)
+            else if(this.filterKeyword == 'korean') return this.items.filter(item => item.menu_type == this.filterKeyword)
+            else if(this.filterKeyword == 'small') return this.items.filter(item => item.menu_type == this.filterKeyword)
+            else if(this.filterKeyword == 'banchan') return this.items.filter(item => item.menu_type == this.filterKeyword)
+            else if(this.filterKeyword == 'other') return this.items.filter(item => item.menu_type == this.filterKeyword)
+            else if(this.filterKeyword == 'winter') return this.items.filter(item => item.menu_type == this.filterKeyword)
+            else return this.items
         }
     },
     created: function() {
         console.log('Bonif created')
-        axios.get('http://localhost:8000/bon/')
+        axios.get('http://192.168.62.55:8000/bonmenu/?format=json')
         .then(res => {
             this.items = res.data
         }, err => {
