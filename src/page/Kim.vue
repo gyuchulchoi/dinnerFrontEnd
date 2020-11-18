@@ -17,11 +17,7 @@ import {
 import {
     utils
 } from '../assets/mixin'
-import axios from 'axios'
-import {
-    API_SERVER,
-    KIMMENU
-} from '../assets/urls'
+import {getKimMenu} from '../api/kim'
 
 export default {
     components: {
@@ -47,12 +43,17 @@ export default {
         }
     },
     created: function () {
-        axios.get(API_SERVER + KIMMENU)
-            .then(res => {
-                this.items = res.data
-            }, err => {
-                console.log(err)
-            });
+        // axios.get(API_SERVER + KIMMENU)
+        //     .then(res => {
+        //         this.items = res.data
+        //     }, err => {
+        //         console.log(err)
+        //     });
+        getKimMenu().then(res => {
+            this.items = res.data
+        }, err => {
+            console.log(err)
+        });
     },
     mixins: [myMixin, utils('restourantKind')]
 }
