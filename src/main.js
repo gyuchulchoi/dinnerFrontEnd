@@ -36,7 +36,6 @@ const routes = [
     { path: '/confirmOrder', component: ConfirmOrder },
     { path: '/bon', component: Bonif },
     { path: '/kim', component: Kim },
-
 ]
 
 const router = new VueRouter({

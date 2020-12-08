@@ -1,5 +1,5 @@
 <template>
-<b-card v-if="menu" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top tag="article" style="max-width: 20rem;" class="mb-2">
+<b-card v-if="menu" :img-src="menu.menu_img" img-alt="Image" img-top tag="article" style="max-width: 20rem;" class="mb-2">
     <b-card-title>
         <div>
             {{menu.menu_name}}
@@ -14,7 +14,7 @@
         <b-modal :id="menu.id + 'id'" title="추가하기" @ok="insertMenu(menu, orderer)">
             <b-form-input placeholder="먹을사람 이름을 입력하세요" v-model="orderer" />
             <p class="my-4">{{menu.menu_name}}</p>
-            <p class="my-4">{{menu.menu_price}}</p>
+            <p class="my-4">{{menu.menu_price | comma}}원</p>
 
         </b-modal>
     </div>

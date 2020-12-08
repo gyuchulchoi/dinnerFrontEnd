@@ -45,7 +45,7 @@ export default {
     },
     created: function() {
         console.log('Bonif created')
-        axios.get('http://192.168.62.55:8000/bonmenu/?format=json')
+        axios.get('http://192.168.62.51:8000/bonmenu/?format=json')
         .then(res => {
             this.items = res.data
         }, err => {

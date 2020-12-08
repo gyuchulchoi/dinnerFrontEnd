@@ -28,13 +28,10 @@
         </b-card>
         <b-card header="중국집">
             <b-list-group>
-                <b-list-group-item v-for="order in orderListbyRestaurant('kim')" :key="order.in">
-                    {{order.orderer}} {{order.name}}
-                    <span class="price">{{order.price | comma}}원</span>
-                </b-list-group-item>
+
             </b-list-group>
             <div class="totalPrice">
-                합계 : {{totalPrice('kim') | comma}}원
+                합계 : 0원
             </div>
         </b-card>
     </b-card-group>
