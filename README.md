@@ -1,4 +1,4 @@
-# choosingdinner
+# choosingdinner(야식 주문 앱)
 
 ## Project setup
 ```
